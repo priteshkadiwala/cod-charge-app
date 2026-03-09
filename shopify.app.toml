@@ -28,12 +28,16 @@ api_version = "2026-04"
   uri = "/webhooks/customers/redact"
 
   [[webhooks.subscriptions]]
+  topics = [ "orders/create" ]
+  uri = "/webhooks/orders/create"
+
+  [[webhooks.subscriptions]]
   compliance_topics = [ "shop/redact" ]
   uri = "/webhooks/shop/redact"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "read_payment_customizations,write_payment_customizations"
+scopes = "read_payment_customizations,write_payment_customizations,read_orders,write_orders"
 
 [auth]
 redirect_urls = ["https://cod-charge-app.vercel.app/auth/callback"]

@@ -152,7 +152,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     status: "active" as const,
     enabled: true,
     amount,
-    message: `COD Charge is active. Customers will see an additional ₹${amount} charge on the Cash on Delivery payment method.`,
+    message: `COD Charge is active. ₹${amount} will be shown at checkout and automatically added to orders placed with Cash on Delivery.`,
   });
 };
 
@@ -392,8 +392,9 @@ export default function Index() {
                 </InlineStack>
 
                 <Text variant="bodyMd" as="p">
-                  Add a Cash on Delivery charge that is displayed to customers
-                  at checkout when they select the COD payment method.
+                  Add a Cash on Delivery surcharge that is automatically applied
+                  to orders placed with the COD payment method. The charge is
+                  shown at checkout and added to the order total.
                 </Text>
 
                 <Box>
@@ -412,7 +413,7 @@ export default function Index() {
                       autoComplete="off"
                       min={0}
                       step={1}
-                      helpText="This amount will be shown alongside the Cash on Delivery payment method at checkout."
+                      helpText="This amount will be shown on the COD payment method at checkout and automatically added to the order total."
                     />
                     <InlineStack align="end" gap="300">
                       {enabled ? (

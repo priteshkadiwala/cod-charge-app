@@ -3,6 +3,7 @@ api_version = "2025-04"
 [[extensions]]
 handle = "cod-charge"
 name = "COD Charge"
+uid = "3cf43b40-c5cd-ae88-3274-d0ac50d77689624cdaac"
 type = "function"
 
   [[extensions.targeting]]
