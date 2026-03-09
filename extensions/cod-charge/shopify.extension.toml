@@ -1,0 +1,15 @@
+api_version = "2025-04"
+
+[[extensions]]
+handle = "cod-charge"
+name = "COD Charge"
+type = "function"
+
+  [[extensions.targeting]]
+  target = "purchase.payment-customization.run"
+  input_query = "src/run.graphql"
+  export = "run"
+
+  [extensions.build]
+  command = ""
+  path = "dist/function.wasm"

@@ -1,0 +1,11 @@
+query RunInput {
+  paymentCustomization {
+    metafield(namespace: "cod-charge", key: "amount") {
+      value
+    }
+  }
+  paymentMethods {
+    id
+    name
+  }
+}
