@@ -2,7 +2,7 @@
 
 client_id = "46065bfd518bee7a1df644ccf30adef2"
 name = "COD Charge"
-application_url = ""
+application_url = "https://cod-charge-app.vercel.app"
 embedded = true
 
 [build]
@@ -36,4 +36,4 @@ api_version = "2026-04"
 scopes = "read_payment_customizations,write_payment_customizations"
 
 [auth]
-redirect_urls = []
+redirect_urls = ["https://cod-charge-app.vercel.app/auth/callback"]
