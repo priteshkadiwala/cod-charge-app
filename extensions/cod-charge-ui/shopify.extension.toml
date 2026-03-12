@@ -1,0 +1,22 @@
+api_version = "2025-04"
+
+[[extensions]]
+uid = "57b3691b-612a-9cfe-d637-820ad9bb7bc05e0ffc23"
+type = "ui_extension"
+name = "COD Charge"
+handle = "cod-charge-ui"
+
+  [[extensions.targeting]]
+  module = "./src/Checkout.jsx"
+  target = "purchase.checkout.payment-method-list.render-after"
+
+  [extensions.capabilities]
+  api_access = true
+
+  [[extensions.metafields]]
+  namespace = "cod-charge"
+  key = "variant_id"
+
+  [[extensions.metafields]]
+  namespace = "cod-charge"
+  key = "charge_amount"
