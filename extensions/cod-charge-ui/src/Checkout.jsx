@@ -76,9 +76,9 @@ function Extension() {
     chargeAmount % 1 === 0 ? chargeAmount.toFixed(0) : chargeAmount.toFixed(2);
 
   return (
-    <Banner status="info" title="COD Charge Applied">
+    <Banner status="info" title="COD Fee Applied">
       <Text>
-        A COD handling fee of ₹{displayAmount} has been added to your order.
+        A COD fee of ₹{displayAmount} has been added to your order.
       </Text>
     </Banner>
   );

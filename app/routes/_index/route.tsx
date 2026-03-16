@@ -22,7 +22,7 @@ export default function App() {
   return (
     <div className={styles.index}>
       <div className={styles.content}>
-        <h1 className={styles.heading}>COD Charge</h1>
+        <h1 className={styles.heading}>COD Fee Manager</h1>
         <p className={styles.text}>
           Add a configurable Cash on Delivery charge that is displayed to
           customers at checkout.

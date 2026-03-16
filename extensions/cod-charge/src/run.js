@@ -45,7 +45,7 @@ export function run(input) {
       {
         rename: {
           paymentMethodId: codMethod.id,
-          name: `${codMethod.name} (+ ₹${displayAmount} COD Charge)`,
+          name: `${codMethod.name} (+ ₹${displayAmount} COD Fee)`,
         },
       },
     ],

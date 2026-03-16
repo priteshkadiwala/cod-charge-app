@@ -3,7 +3,7 @@ api_version = "2025-04"
 [[extensions]]
 uid = "57b3691b-612a-9cfe-d637-820ad9bb7bc05e0ffc23"
 type = "ui_extension"
-name = "COD Charge"
+name = "COD Fee Manager"
 handle = "cod-charge-ui"
 
   [[extensions.targeting]]

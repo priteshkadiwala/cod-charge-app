@@ -154,11 +154,11 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
 		const lineItems = orderData.data?.order?.lineItems?.nodes ?? [];
 		const alreadyHasCodProduct = lineItems.some(
-			(item: any) => item.title === 'COD Charge',
+			(item: any) => item.title === 'COD Fee Manager' || item.title === 'COD Charge',
 		);
 		if (alreadyHasCodProduct) {
 			console.log(
-				`[COD-WEBHOOK] COD Charge product already in order line items, tagging only`,
+				`[COD-WEBHOOK] COD fee product already in order line items, tagging only`,
 			);
 			try {
 				await admin.graphql(TAGS_ADD, {
@@ -183,12 +183,12 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 		);
 
 		const codCustomization = customizations.find(
-			(c: any) => c.title === 'COD Charge' && c.enabled,
+			(c: any) => (c.title === 'COD Fee Manager' || c.title === 'COD Charge') && c.enabled,
 		);
 
 		if (!codCustomization) {
 			console.log(
-				'[COD-WEBHOOK] BAIL: No active COD Charge customization found',
+				'[COD-WEBHOOK] BAIL: No active COD Fee Manager customization found',
 			);
 			return new Response();
 		}
@@ -259,7 +259,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 		console.log('[COD-WEBHOOK] Step 4: Adding COD charge line item...');
 		const addItemVars = {
 			id: calculatedOrderId,
-			title: 'COD Charge',
+			title: 'COD Fee',
 			quantity: 1,
 			price: {
 				amount: String(chargeAmount),

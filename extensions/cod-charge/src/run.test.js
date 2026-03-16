@@ -13,7 +13,7 @@ function makeInput({ amount, paymentMethods }) {
   };
 }
 
-describe("COD Charge", () => {
+describe("COD Fee Manager", () => {
   it("renames COD with the charge amount", () => {
     const result = run(makeInput({ amount: 50 }));
 
@@ -22,7 +22,7 @@ describe("COD Charge", () => {
         {
           rename: {
             paymentMethodId: "2",
-            name: "Cash on Delivery (+ ₹50 COD Charge)",
+            name: "Cash on Delivery (+ ₹50 COD Fee)",
           },
         },
       ],
@@ -37,7 +37,7 @@ describe("COD Charge", () => {
         {
           rename: {
             paymentMethodId: "2",
-            name: "Cash on Delivery (+ ₹49.99 COD Charge)",
+            name: "Cash on Delivery (+ ₹49.99 COD Fee)",
           },
         },
       ],
@@ -87,7 +87,7 @@ describe("COD Charge", () => {
         {
           rename: {
             paymentMethodId: "2",
-            name: "CASH ON DELIVERY (+ ₹50 COD Charge)",
+            name: "CASH ON DELIVERY (+ ₹50 COD Fee)",
           },
         },
       ],
@@ -110,7 +110,7 @@ describe("COD Charge", () => {
         {
           rename: {
             paymentMethodId: "2",
-            name: "COD (+ ₹100 COD Charge)",
+            name: "COD (+ ₹100 COD Fee)",
           },
         },
       ],

@@ -4,13 +4,13 @@ export default function PrivacyPolicy() {
 			<div style={styles.container}>
 				<h1 style={styles.title}>Privacy Policy</h1>
 				<p style={styles.subtitle}>
-					<strong>COD Charge</strong> — operated by Mellow Muffin Apps
+					<strong>COD Fee Manager</strong> — operated by Mellow Muffin Apps
 				</p>
 				<p style={styles.updated}>Last updated: March 9, 2026</p>
 
 				<Section title="1. Introduction">
 					<p>
-						This Privacy Policy describes how COD Charge (&ldquo;the
+						This Privacy Policy describes how COD Fee Manager (&ldquo;the
 						App&rdquo;), developed by Mellow Muffin Apps (&ldquo;we&rdquo;,
 						&ldquo;us&rdquo;, or &ldquo;our&rdquo;), collects, uses, and
 						discloses information when you install and use the App through the

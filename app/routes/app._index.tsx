@@ -276,7 +276,7 @@ async function ensureCODProduct(admin: any, chargeAmount: number) {
 	const createResponse = await admin.graphql(PRODUCT_CREATE, {
 		variables: {
 			product: {
-				title: 'COD Charge',
+				title: 'COD Fee Manager',
 				productType: 'fee',
 				status: 'ACTIVE',
 			},
@@ -288,7 +288,7 @@ async function ensureCODProduct(admin: any, chargeAmount: number) {
 	if (!product) {
 		const errors = createData.data?.productCreate?.userErrors ?? [];
 		throw new Error(
-			`Failed to create COD Charge product: ${errors.map((e: any) => e.message).join(', ')}`,
+			`Failed to create COD Fee Manager product: ${errors.map((e: any) => e.message).join(', ')}`,
 		);
 	}
 
@@ -377,7 +377,7 @@ async function findFunction(admin: any) {
 	const functionsResponse = await admin.graphql(SHOPIFY_FUNCTIONS_QUERY);
 	const functionsData = await functionsResponse.json();
 	const functions = functionsData.data?.shopifyFunctions?.nodes ?? [];
-	return functions.find((fn: any) => fn.title === 'COD Charge');
+	return functions.find((fn: any) => fn.title === 'COD Fee Manager' || fn.title === 'COD Charge');
 }
 
 async function findExistingCustomization(admin: any, functionId: string) {
@@ -400,7 +400,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 			enabled: false,
 			amount: '',
 			message:
-				'Could not find the COD Charge function. Make sure the extension is deployed.',
+				'Could not find the COD Fee Manager function. Make sure the extension is deployed.',
 		});
 	}
 
@@ -412,7 +412,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 			enabled: false,
 			amount: '',
 			message:
-				'COD Charge has not been activated yet. Set a charge amount and click Activate.',
+				'COD Fee Manager has not been activated yet. Set a charge amount and click Activate.',
 		});
 	}
 
@@ -427,7 +427,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 			enabled: false,
 			amount,
 			message:
-				'COD Charge exists but is currently disabled. Click Activate to enable it.',
+				'COD Fee Manager exists but is currently disabled. Click Activate to enable it.',
 		});
 	}
 
@@ -442,7 +442,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 				status: 'active' as const,
 				enabled: true,
 				amount,
-				message: `COD Charge is active but the product was deleted. Click Save to recreate it.`,
+				message: `COD Fee Manager is active but the product was deleted. Click Save to recreate it.`,
 				productMissing: true,
 			});
 		}
@@ -452,7 +452,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 		status: 'active' as const,
 		enabled: true,
 		amount,
-		message: `COD Charge is active. ₹${amount} will be shown at checkout and automatically added to orders placed with Cash on Delivery.`,
+		message: `COD Fee Manager is active. ₹${amount} will be shown at checkout and automatically added to orders placed with Cash on Delivery.`,
 	});
 };
 
@@ -470,7 +470,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 				enabled: false,
 				amount: '',
 				message:
-					'Could not find the COD Charge function. Deploy the extension first.',
+					'Could not find the COD Fee Manager function. Deploy the extension first.',
 			});
 		}
 
@@ -496,7 +496,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 						variables: {
 							paymentCustomization: {
 								functionId: ourFunction.id,
-								title: 'COD Charge',
+								title: 'COD Fee Manager',
 								enabled: true,
 								metafields: [
 									{
@@ -525,7 +525,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 					status: 'active' as const,
 					enabled: true,
 					amount: String(chargeAmount),
-					message: `COD Charge activated successfully. Charge: ₹${chargeAmount}`,
+					message: `COD Fee Manager activated successfully. Charge: ₹${chargeAmount}`,
 				});
 			}
 
@@ -560,7 +560,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 				status: 'active' as const,
 				enabled: true,
 				amount: String(chargeAmount),
-				message: `COD Charge updated and enabled. Charge: ₹${chargeAmount}`,
+				message: `COD Fee Manager updated and enabled. Charge: ₹${chargeAmount}`,
 			});
 		}
 
@@ -593,7 +593,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 				status: 'disabled' as const,
 				enabled: false,
 				amount: amountMetafield?.value ?? '',
-				message: 'COD Charge has been disabled.',
+				message: 'COD Fee Manager has been disabled.',
 			});
 		}
 
@@ -658,7 +658,7 @@ export default function Index() {
 
 	return (
 		<Page>
-			<TitleBar title="COD Charge" />
+			<TitleBar title="COD Fee Manager" />
 			<BlockStack gap="500">
 				<Layout>
 					<Layout.Section>
@@ -666,7 +666,7 @@ export default function Index() {
 							<BlockStack gap="400">
 								<InlineStack align="space-between" blockAlign="center">
 									<Text as="h2" variant="headingMd">
-										COD Charge Settings
+										COD Fee Manager Settings
 									</Text>
 									<Badge
 										tone={
@@ -704,7 +704,7 @@ export default function Index() {
 								{status !== 'not_deployed' && (
 									<FormLayout>
 										<TextField
-											label="COD Charge Amount (₹)"
+											label="COD Fee Amount (₹)"
 											type="number"
 											value={amount}
 											onChange={handleAmountChange}

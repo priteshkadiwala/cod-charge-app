@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "46065bfd518bee7a1df644ccf30adef2"
-name = "COD Charge"
+name = "COD Fee Manager"
 application_url = "https://cod-charge-app.vercel.app"
 embedded = true
 
